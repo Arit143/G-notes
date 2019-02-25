@@ -1,0 +1,70 @@
+header {
+  background: #F8F8F8;
+  padding: 15px;
+  font-size: 20px;
+  border-bottom: 1px solid #CCC;
+}
+
+.listContainer {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-right: 0;
+  border-top: 0;
+}
+
+@media only screen and (min-width: 1025px) {
+  header {
+    margin-left: 15px;
+    margin-right: 75px;
+  }
+  
+  .listItemContainer {
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .listContainer {
+    border-right: 1px solid #ccc;
+  }
+
+  .addNote {
+    margin-top: 20px;
+  }
+
+  .noteContainer {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+  }
+}
+
+.deleteListItem {
+  float: right; 
+  color: #ccc;
+  font-size: 15px;
+}
+
+.listTitle {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.addNote {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: right; 
+}
+
+.saveNote {
+  text-align: right; 
+}
+
+.verticalLine {
+  height: 500px;
+  width: 0;
+  border-left: 1px solid #ccc;
+}
+
+
+
+
