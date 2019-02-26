@@ -15,6 +15,15 @@ class Notes extends Component {
 		this.onSave = this.onSave.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.title !== nextProps.title || this.props.body !== nextProps.body) {
+			this.setState({
+				title: nextProps.title,
+				body: nextProps.body
+			});
+		}
+	}
+
 	onAddNote() {
 		this.setState({
 			title: '',

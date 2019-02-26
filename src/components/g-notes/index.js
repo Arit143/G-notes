@@ -16,12 +16,15 @@ class GNotesContainer extends Component {
         super(props);
         this.state = {
             list: [],
-            id: 0
+            selectedIndex: 0,
+            selectedTitle: '',
+            selectedBody: ''
         };
 
         this.addNotes = this.addNotes.bind(this);
         this.deleteListItem = this.deleteListItem.bind(this);
         this.updateNotes = this.updateNotes.bind(this);
+        this.listItemClick = this.listItemClick.bind(this);
     }
 
     addNotes() {
@@ -35,8 +38,16 @@ class GNotesContainer extends Component {
 
         this.setState({
             list: concat(this.state.list, [{ title: '', body: ''}]),
-            id: this.state.list.length
+            selectedIndex: this.state.list.length
         });
+    }
+
+    listItemClick(index) {
+        this.setState({
+            selectedTitle: this.state.list[index].title,
+            selectedBody: this.state.list[index].body,
+            selectedIndex: index
+        })
     }
 
     deleteListItem(itemToDelete) {
@@ -56,6 +67,8 @@ class GNotesContainer extends Component {
         ];
 
         this.setState({
+            selectedTitle: updatedList[id].title,
+            selectedBody: updatedList[id].body,
             list: updatedList
         });
     }
@@ -64,11 +77,13 @@ class GNotesContainer extends Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <List list={this.state.list} onListItemDelete={this.deleteListItem}/>
+                    <List list={this.state.list} listItemClick={this.listItemClick} onListItemDelete={this.deleteListItem}/>
                     <Media query={{ minWidth: 1025 }}>
                         <div className="col-lg-1 verticalLine"></div>
                     </Media>
-                    <Notes listId={this.state.id} 
+                    <Notes listId={this.state.selectedIndex} 
+                            title={this.state.selectedTitle}
+                            body={this.state.selectedBody}
                             onAddNote={this.addNotes} 
                             onSave={this.updateNotes}
                     />

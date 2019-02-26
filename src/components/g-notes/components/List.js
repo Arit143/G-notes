@@ -14,11 +14,14 @@ class Lists extends Component {
                     }
 
                     return (
-                        <div key={index} className="listContainer">
+                        <div key={index} className="listContainer" onClick={() => this.props.listItemClick(index)}>
                             <div className="listTitle">
                                 {list.title}
                                 <span 
-                                    onClick={() => this.props.onListItemDelete(index)} 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        this.props.onListItemDelete(index)
+                                    }} 
                                     className="glyphicon glyphicon-remove deleteListItem"></span>
                             </div>
                             <div>{list.body}</div>
